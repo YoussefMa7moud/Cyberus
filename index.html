@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberus - University Hacking Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #001a1a;
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background-color: #000d0d;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 120px; /* Increased from 50px */
+            height: 100px; /* Increased from 50px */
+            border-radius: 0; /* Removed border-radius since new logo doesn't need it */
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home { 
+            background-color: #001a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./Data/Cyberus-white-logo-no-bg.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        #home > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Make video section responsive */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            border: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            
+        }
+
+
+
+        .navbar {
+            background-color: #000d0d;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 110px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home { background-color: #001a1a; }
+        #video { background-color: #002626; }
+        #committees { background-color: #003333; }
+        #team { background-color: #004040; }
+        #events { background-color: #004d4d; }
+        #leaderboard { background-color: #005959; }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .committee-grid, .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .committee-card, .team-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .committee-card:hover, .team-card:hover {
+            transform: scale(1.05);
+        }
+
+        .committee-logo, .team-image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .team-image {
+            width: 150px;
+            height: 150px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        .event-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .event {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .event-info {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .event-poster {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            align-self: center;
+        }
+
+        .leaderboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            
+        }
+
+
+
+        .leaderboard:Before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./Data/Cyberus-white-logo-no-bg.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .leaderboard {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .leaderboard-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            border-bottom: 1px solid #004d4d;
+        }
+
+        .leaderboard-item:nth-child(-n+3) {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .slide-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem;
+               
+            }
+
+            .nav-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+            .logo {
+                width: 60px; /* Slightly smaller on mobile */
+                height: 60px;
+            }
+            .welcome-text {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .event {
+                text-align: center;
+            }
+
+            .leaderboard {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+        <div class="nav-content">
+            <img src="./Data/Cyberus-white-logo-no-bg.png" alt="Cyberus Logo" class="logo">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#team">Team</a>
+                <a href="#events">Events</a>
+                <a href="#leaderboard">Leaderboard</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="home" class="section">
+        <h1 class="welcome-text"></h1>
+        <p class="description fade-in">
+            Cyberus is the premier competitive hacking club at our university. We organize events, workshops, and competitions to enhance your cybersecurity skills and prepare you for real-world challenges.
+        </p>
+    </section>
+
+    <section id="video" class="section">
+        <h2 class="section-title">Watch Our Latest Event</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/nd5W82KN9B8" title="OSINT: How to Find Information about ANYONE!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="committees" class="section">
+        <h2 class="section-title">Our Committees</h2>
+        <div class="committee-grid">
+            <div class="committee-card slide-in">
+                <img src="./Data/Bug Hunters.png" alt="Media Committee" class="committee-logo">
+                <h3>Bug Hunters</h3>
+            </div>
+            <div class="committee-card slide-in">
+                <img src="./Data/Creative Operations.png" alt="Technical Committee" class="committee-logo">
+                <h3>Creative Operations</h3>
+            </div>
+            <div class="committee-card slide-in">
+                <img src="./Data/Human Resources.png" alt="Events Committee" class="committee-logo">
+                <h3>Human Resources</h3>
+            </div>
+            <div class="committee-card slide-in">
+                <img src="./Data/Network Pentesters.png" alt="Events Committee" class="committee-logo">
+                <h3>Network Pentesters</h3>
+            </div>
+            <div class="committee-card slide-in">
+                <img src="./Data/Public Relations.png" alt="Events Committee" class="committee-logo">
+                <h3>Public Relations.png</h3>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="team" class="section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 1" class="team-image">
+                <h3>John Doe</h3>
+                <p>President</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 2" class="team-image">
+                <h3>Jane Smith</h3>
+                <p>Vice President</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 3" class="team-image">
+                <h3>Mike Johnson</h3>
+                <p>Technical Lead</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 4" class="team-image">
+                <h3>Emily Brown</h3>
+                <p>Events Coordinator</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 5" class="team-image">
+                <h3>David Lee</h3>
+                <p>Media Manager</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 6" class="team-image">
+                <h3>Sarah Wilson</h3>
+                <p>Secretary</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 7" class="team-image">
+                <h3>Alex Turner</h3>
+                <p>Treasurer</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 8" class="team-image">
+                <h3>Olivia Clark</h3>
+                <p>Outreach Coordinator</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 9" class="team-image">
+                <h3>Ryan Martinez</h3>
+                <p>Workshop Facilitator</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 10" class="team-image">
+                <h3>Emma White</h3>
+                <p>Social Media Manager</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 11" class="team-image">
+                <h3>Daniel Kim</h3>
+                <p>Competition Organizer</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 12" class="team-image">
+                <h3>Sophia Nguyen</h3>
+                <p>Webmaster</p>
+            </div>
+            <div class="team-card slide-in">
+                <img src="/placeholder.svg?height=150&width=150" alt="Team Member 13" class="team-image">
+                <h3>Ethan Taylor</h3>
+                <p>Mentorship Coordinator</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="events" class="section">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="event-container">
+            <div class="event slide-in">
+                <div class="event-info">
+                    <h3>Capture The Flag Challenge</h3>
+                    <p>Date: August 15, 2023</p>
+                    <p>Join us for an exciting CTF competition where you can test your hacking skills and win amazing prizes!</p>
+                </div>
+                <img src="./Data/Form is open.png" alt="CTF Event Poster" class="event-poster">
+            </div>
+            <div class="event slide-in">
+                <div class="event-info">
+                    <h3>Cybersecurity Workshop</h3>
+                    <p>Date: September 1, 2023</p>
+                    <p>Learn about the latest cybersecurity trends and techniques from industry experts in this hands-on workshop.</p>
+                </div>
+                <img src="./Data/Wireless Security Event Cover.png" alt="Workshop Event Poster" class="event-poster">
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="leaderboard" class="section">
+        <h2 class="section-title">Leaderboards</h2>
+        <div class="leaderboard-container">
+            <div class="leaderboard slide-in">
+                <h3 class="leaderboard-title">CTF Champions</h3>
+                <div class="leaderboard-item">
+                    <span>1. Alice</span>
+                    <span>1000 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>2. Bob</span>
+                    <span>950 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>3. Charlie</span>
+                    <span>900 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>4. David</span>
+                    <span>850 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>5. Eve</span>
+                    <span>800 pts</span>
+                </div>
+            </div>
+            <div class="leaderboard slide-in">
+                <h3 class="leaderboard-title">Web Security Masters</h3>
+                <div class="leaderboard-item">
+                    <span>1. Frank</span>
+                    <span>950 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>2. Grace</span>
+                    <span>900 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>3. Henry</span>
+                    <span>850 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>4. Ivy</span>
+                    <span>800 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>5. Jack</span>
+                    <span>750 pts</span>
+                </div>
+            </div>
+            <div class="leaderboard slide-in">
+                <h3 class="leaderboard-title">Reverse Engineering Experts</h3>
+                <div class="leaderboard-item">
+                    <span>1. Kelly</span>
+                    <span>980 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>2. Liam</span>
+                    <span>930 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>3. Mia</span>
+                    <span>880 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>4. Noah</span>
+                    <span>830 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>5. Olivia</span>
+                    <span>780 pts</span>
+                </div>
+            </div>
+            <div class="leaderboard slide-in">
+                <h3 class="leaderboard-title">Network Security Gurus</h3>
+                <div class="leaderboard-item">
+                    <span>1. Paul</span>
+                    <span>970 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>2. Quinn</span>
+                    <span>920 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>3. Rachel</span>
+                    <span>870 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>4. Sam</span>
+                    <span>820 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>5. Tina</span>
+                    <span>770 pts</span>
+                </div>
+            </div>
+            <div class="leaderboard slide-in">
+                <h3 class="leaderboard-title">Cryptography Masters</h3>
+                <div class="leaderboard-item">
+                    <span>1. Uma</span>
+                    <span>990 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>2. Victor</span>
+                    <span>940 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>3. Wendy</span>
+                    <span>890 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>4. Xander</span>
+                    <span>840 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span>5. Yara</span>
+                    <span>790 pts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced typing animation
+        const welcomeText = "Welcome to Cyberus";
+        const welcomeElement = document.querySelector('.welcome-text');
+        let isDeleting = false;
+        let txtIndex = 0;
+        let charIndex = 0;
+
+        function typeWriter() {
+            const currentText = welcomeText.substring(0, charIndex);
+            welcomeElement.innerHTML = currentText + '<span class="cursor">|</span>';
+
+            if (!isDeleting && charIndex < welcomeText.length) {
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else if (!isDeleting && charIndex === welcomeText.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeWriter();
+                }, 2000);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(typeWriter, 50);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        typeWriter();
+
+        // Previous scroll animation code remains the same
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.slide-in');
+            elements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('load', handleScrollAnimations);
+    </script>
+</body>
+</html>
